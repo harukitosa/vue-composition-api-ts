@@ -1,5 +1,7 @@
 <template>
-    <div class="hello"></div>
+    <div class="hello">
+        <button @click="upperCaseMessage">To upperCase</button>
+    </div>
 </template>
 
 <script lang="ts">
@@ -17,7 +19,7 @@ export default defineComponent({
     },
     setup(props: Props, context: SetupContext) {
         const upperCaseMessage = () => {
-            context.emit("emit-sample", props.message.toUpperCase());
+            context.emit("change-message", props.message.toUpperCase());
         };
 
         return {

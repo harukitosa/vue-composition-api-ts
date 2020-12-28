@@ -1,16 +1,34 @@
 <template>
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld />
+    <h1>{{ state.message }}</h1>
+    <PropsComp :message="state.message" @change-message="changeMessage" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
+import PropsComp from "./components/PropsComp.vue";
 
 export default defineComponent({
     name: "App",
     components: {
         HelloWorld,
+        PropsComp,
+    },
+    setup() {
+        const state = reactive({
+            message: "Hello",
+        });
+
+        const changeMessage = (message: string) => {
+            state.message = message;
+        };
+
+        return {
+            state,
+            changeMessage,
+        };
     },
 });
 </script>
