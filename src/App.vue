@@ -3,18 +3,21 @@
     <HelloWorld />
     <h1>{{ state.message }}</h1>
     <PropsComp :message="state.message" @change-message="changeMessage" />
+    <LifeComp />
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import PropsComp from "./components/PropsComp.vue";
+import LifeComp from "./components/LifeComp.vue";
 
 export default defineComponent({
     name: "App",
     components: {
         HelloWorld,
         PropsComp,
+        LifeComp,
     },
     setup() {
         const state = reactive({
